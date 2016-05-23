@@ -1,8 +1,5 @@
 package ru.juliamelf.javaqa.sandbox;
 
-/**
- * Created by korotkova on 5/23/2016.
- */
 public class Point {
 
     public int x;
