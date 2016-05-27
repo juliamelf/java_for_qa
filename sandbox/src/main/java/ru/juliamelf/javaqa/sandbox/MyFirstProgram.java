@@ -15,9 +15,9 @@ public class MyFirstProgram{
 		*/
 
 		System.out.println("Lesson1, Homework 2");
-		Point p1 = new Point(5,10);
+		Point p1 = new Point(0,0);
 		System.out.println("Координаты точки A: " + p1.x + ", " + p1.y);
-		Point p2 = new Point(7,20);
+		Point p2 = new Point(5,5);
 		System.out.println("Координаты точки B: " + p2.x + ", " + p2.y);
 		System.out.println("Расстояние от точки А до точки В: " + p1.distance(p2));
 
