@@ -192,4 +192,14 @@ public class TestBase {
     protected void gotoContactAdd() {
         wd.findElement(By.linkText("add new")).click();
     }
+
+    protected void deleteGroup() {
+        wd.findElement(By.name("delete")).click();
+    }
+
+    protected void selectGroup() {
+        if (!wd.findElement(By.name("selected[]")).isSelected()) {
+            wd.findElement(By.name("selected[]")).click();
+        }
+    }
 }
