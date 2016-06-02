@@ -1,4 +1,4 @@
-package ru.juliamelf.javaqa.addressbook.model;
+package ru.juliamelf.javaqa.addressbook;
 
 public class EmailData {
     private final String firstEmail;

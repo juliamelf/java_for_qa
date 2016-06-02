@@ -1,4 +1,4 @@
-package ru.juliamelf.javaqa.addressbook.model;
+package ru.juliamelf.javaqa.addressbook;
 
 public class PhoneData {
     private final String homeNumber;
