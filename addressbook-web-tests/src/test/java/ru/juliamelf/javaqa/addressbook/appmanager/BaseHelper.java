@@ -30,9 +30,7 @@ public class BaseHelper {
         wd.findElement(By.name("user")).sendKeys(username);
     }
 
-    protected void openApplication() {
-        wd.get("http://localhost/addressbook/");
-    }
+
 
     protected void openGroupsPage() {
         wd.findElement(By.linkText("group page")).click();
