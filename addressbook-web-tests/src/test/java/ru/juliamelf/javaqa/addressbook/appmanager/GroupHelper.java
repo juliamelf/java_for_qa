@@ -27,7 +27,7 @@ public class GroupHelper {
 
     public void submitGroupCreation() {
 
-        baseHelper.clickEnterGroupButton();
+        baseHelper.clickEnterButton();
     }
 
     public void returnToGroupPage() {

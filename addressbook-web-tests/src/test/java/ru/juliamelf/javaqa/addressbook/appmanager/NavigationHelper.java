@@ -1,32 +1,27 @@
 package ru.juliamelf.javaqa.addressbook.appmanager;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
  * Created by korotkova on 6/2/2016.
  */
 public class NavigationHelper {
-
-    private final BaseHelper baseHelper;
+    private FirefoxDriver wd;
 
     public NavigationHelper(FirefoxDriver wd) {
-
-        baseHelper = new BaseHelper(wd);
+        this.wd = wd;
     }
 
     public void gotoGroupPage() {
-        baseHelper.openGroupsPage();
+        wd.findElement(By.linkText("groups")).click();
     }
 
     public void gotoHomePage() {
-        baseHelper.openHomePage();
+        wd.findElement(By.linkText("home")).click();
     }
 
     public void gotoContactAdd() {
-        baseHelper.openAddContactPage();
-    }
-
-    public BaseHelper getBaseHelper() {
-        return baseHelper;
+        wd.findElement(By.linkText("add new")).click();
     }
 }
