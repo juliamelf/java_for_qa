@@ -17,6 +17,7 @@ public class ContactCreationTests extends TestBase {
         app.getContactHelper().fillEmailData(new EmailData("ivan@company.ru", "ivan2@company.ru", "ivan3@company.ru"));
         app.getContactHelper().fillHomepageData("ivan.ru");
         app.getContactHelper().fillBirthdayData();
+        app.getContactHelper().fillGroup();
         app.getContactHelper().fillSecondAddressData("Street name, 222");
         app.getContactHelper().fillSecondPhoneData("84951232323");
         app.getContactHelper().fillNotesData("comments");
