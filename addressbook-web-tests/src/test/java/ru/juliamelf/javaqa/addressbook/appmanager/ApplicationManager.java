@@ -1,10 +1,6 @@
 package ru.juliamelf.javaqa.addressbook.appmanager;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.juliamelf.javaqa.addressbook.model.EmailData;
-import ru.juliamelf.javaqa.addressbook.model.PhoneData;
-import ru.juliamelf.javaqa.addressbook.model.UserNameData;
 
 import java.util.concurrent.TimeUnit;
 
@@ -27,6 +23,7 @@ public class ApplicationManager {
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
         contactHelper = new ContactHelper(wd);
+        wd.get("http://localhost/addressbook/");
         sessionHelper.login("admin", "secret");
     }
 

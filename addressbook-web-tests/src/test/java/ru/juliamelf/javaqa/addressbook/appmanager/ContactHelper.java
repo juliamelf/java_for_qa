@@ -9,34 +9,26 @@ import ru.juliamelf.javaqa.addressbook.model.UserNameData;
 /**
  * Created by korotkova on 6/2/2016.
  */
-public class ContactHelper {
-    private FirefoxDriver wd;
+public class ContactHelper extends HelperBase{
 
     public ContactHelper(FirefoxDriver wd) {
-
-        this.wd = wd;
+        super(wd);
     }
 
     public void submitContactAdd() {
-        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+        click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
     public void fillNotesData(String notes) {
-        wd.findElement(By.name("notes")).click();
-        wd.findElement(By.name("notes")).clear();
-        wd.findElement(By.name("notes")).sendKeys(notes);
+        type(By.name("notes"), notes);
     }
 
     public void fillSecondPhoneData(String secondPhone) {
-        wd.findElement(By.name("phone2")).click();
-        wd.findElement(By.name("phone2")).clear();
-        wd.findElement(By.name("phone2")).sendKeys(secondPhone);
+        type(By.name("phone2"), secondPhone);
     }
 
     public void fillSecondAddressData(String secondAddress) {
-        wd.findElement(By.name("address2")).click();
-        wd.findElement(By.name("address2")).clear();
-        wd.findElement(By.name("address2")).sendKeys(secondAddress);
+        type(By.name("address2"), secondAddress);
     }
 
     public void fillBirthdayData() {
@@ -58,71 +50,45 @@ public class ContactHelper {
         wd.findElement(By.name("ayear")).click();
         wd.findElement(By.name("ayear")).clear();
         wd.findElement(By.name("ayear")).sendKeys("1990");
+
+    }
+
+    public void fillGroupData() {
         if (!wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[2]")).isSelected()) {
-            wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[2]")).click();
+            click(By.xpath("//div[@id='content']/form/select[5]//option[2]"));
         }
     }
 
     public void fillHomepageData(String homepage) {
-        wd.findElement(By.name("homepage")).click();
-        wd.findElement(By.name("homepage")).clear();
-        wd.findElement(By.name("homepage")).sendKeys(homepage);
+        type(By.name("homepage"), homepage);
     }
 
     public void fillEmailData(EmailData emailData) {
-        wd.findElement(By.name("email")).click();
-        wd.findElement(By.name("email")).clear();
-        wd.findElement(By.name("email")).sendKeys(emailData.getFirstEmail());
-        wd.findElement(By.name("email2")).click();
-        wd.findElement(By.name("email2")).clear();
-        wd.findElement(By.name("email2")).sendKeys(emailData.getSecondEmail());
-        wd.findElement(By.name("email3")).click();
-        wd.findElement(By.name("email3")).clear();
-        wd.findElement(By.name("email3")).sendKeys(emailData.getThirdEmail());
+        type(By.name("email"), emailData.getFirstEmail());
+        type(By.name("email2"), emailData.getSecondEmail());
+        type(By.name("email3"), emailData.getThirdEmail());
     }
 
     public void fillFirstPhoneData(PhoneData firstPhoneData) {
-        wd.findElement(By.name("home")).click();
-        wd.findElement(By.name("home")).clear();
-        wd.findElement(By.name("home")).sendKeys(firstPhoneData.getHomeNumber());
-        wd.findElement(By.name("mobile")).click();
-        wd.findElement(By.name("mobile")).clear();
-        wd.findElement(By.name("mobile")).sendKeys(firstPhoneData.getMobileNumber());
-        wd.findElement(By.name("work")).click();
-        wd.findElement(By.name("work")).clear();
-        wd.findElement(By.name("work")).sendKeys(firstPhoneData.getWorkNumber());
-        wd.findElement(By.name("fax")).click();
-        wd.findElement(By.name("fax")).clear();
-        wd.findElement(By.name("fax")).sendKeys(firstPhoneData.getFaxNumber());
+        type(By.name("home"), firstPhoneData.getHomeNumber());
+        type(By.name("mobile"), firstPhoneData.getMobileNumber());
+        type(By.name("work"), firstPhoneData.getWorkNumber());
+        type(By.name("fax"), firstPhoneData.getFaxNumber());
     }
 
     public void fillFirstAddressData(String firstAddress) {
-        wd.findElement(By.name("address")).click();
-        wd.findElement(By.name("address")).clear();
-        wd.findElement(By.name("address")).sendKeys(firstAddress);
+       type(By.name("address"), firstAddress);
     }
 
     public void fillCompanyData(String company) {
-        wd.findElement(By.name("company")).click();
-        wd.findElement(By.name("company")).clear();
-        wd.findElement(By.name("company")).sendKeys(company);
+        type(By.name("company"), company);
     }
 
     public void fillNameData(UserNameData userNameData) {
-        wd.findElement(By.name("firstname")).click();
-        wd.findElement(By.name("firstname")).clear();
-        wd.findElement(By.name("firstname")).sendKeys(userNameData.getFirstName());
-        wd.findElement(By.name("middlename")).click();
-        wd.findElement(By.name("middlename")).clear();
-        wd.findElement(By.name("middlename")).sendKeys(userNameData.getMiddleName());
-        wd.findElement(By.name("lastname")).click();
-        wd.findElement(By.name("lastname")).clear();
-        wd.findElement(By.name("lastname")).sendKeys(userNameData.getLastName());
-        wd.findElement(By.name("nickname")).click();
-        wd.findElement(By.name("nickname")).clear();
-        wd.findElement(By.name("nickname")).sendKeys(userNameData.getNickname());
-        wd.findElement(By.name("title")).click();
-        wd.findElement(By.name("title")).clear();
-        wd.findElement(By.name("title")).sendKeys(userNameData.getTitle());
+        type(By.name("firstname"), userNameData.getFirstName());
+        type(By.name("middlename"), userNameData.getMiddleName());
+        type(By.name("lastname"), userNameData.getLastName());
+        type(By.name("nickname"), userNameData.getNickname());
+        type(By.name("title"), userNameData.getTitle());
     }
 }
