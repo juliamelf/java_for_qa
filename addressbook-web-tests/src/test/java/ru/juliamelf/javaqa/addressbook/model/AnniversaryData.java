@@ -1,4 +1,4 @@
-package ru.juliamelf.javaqa.addressbook.appmanager;
+package ru.juliamelf.javaqa.addressbook.model;
 
 import org.openqa.selenium.By;
 

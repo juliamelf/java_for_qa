@@ -2,9 +2,7 @@ package ru.juliamelf.javaqa.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.juliamelf.javaqa.addressbook.model.EmailData;
-import ru.juliamelf.javaqa.addressbook.model.PhoneData;
-import ru.juliamelf.javaqa.addressbook.model.UserNameData;
+import ru.juliamelf.javaqa.addressbook.model.*;
 
 /**
  * Created by korotkova on 6/2/2016.
@@ -85,7 +83,7 @@ public class ContactHelper extends HelperBase{
     }
 
     public void initContactModification() {
-        click(By.xpath("//a[@href='edit.php?id=2']"));
+        click(By.xpath("//a[contains(@href, 'edit.php?id')]"));
     }
 
     public void submitContactModification() {
@@ -94,5 +92,10 @@ public class ContactHelper extends HelperBase{
 
     public void initContactDeletion() {
         click(By.xpath("//input[@value='Delete']"));
+        wd.switchTo().alert().accept();
+    }
+
+    public void selectContact() {
+        click(By.xpath("//input[contains(@title, 'Select')]"));
     }
 }

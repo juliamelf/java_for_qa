@@ -2,8 +2,8 @@ package ru.juliamelf.javaqa.addressbook.tests;
 
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
-import ru.juliamelf.javaqa.addressbook.appmanager.AnniversaryData;
-import ru.juliamelf.javaqa.addressbook.appmanager.BirthdayData;
+import ru.juliamelf.javaqa.addressbook.model.AnniversaryData;
+import ru.juliamelf.javaqa.addressbook.model.BirthdayData;
 import ru.juliamelf.javaqa.addressbook.model.EmailData;
 import ru.juliamelf.javaqa.addressbook.model.PhoneData;
 import ru.juliamelf.javaqa.addressbook.model.UserNameData;
@@ -23,7 +23,7 @@ public class ContactModificationTests extends TestBase {
         app.getContactHelper().fillEmailData(new EmailData("petr@company.ru", "petr2@company.ru", "petr3@company.ru"));
         app.getContactHelper().fillHomepageData("petr.ru");
         app.getContactHelper().fillBirthdayData(new BirthdayData("1995", By.xpath("//select[@name='bday']//option[20]"), By.xpath("//select[@name='bmonth']//option[5]")));
-        app.getContactHelper().fillAnniversaryData(new AnniversaryData("2015", By.xpath("//select[@name='bday']//option[20]"), By.xpath("//select[@name='bmonth']//option[5]")));
+        app.getContactHelper().fillAnniversaryData(new AnniversaryData("2015", By.xpath("//select[@name='aday']//option[20]"), By.xpath("//select[@name='amonth']//option[5]")));
         app.getContactHelper().fillSecondAddressData("New Street name, 222");
         app.getContactHelper().fillSecondPhoneData("84957774411");
         app.getContactHelper().fillNotesData("new comments");
