@@ -32,4 +32,10 @@ public class HelperBase {
             return false;
         }
     }
+
+    protected void selectFromList(By locator) {
+        if (!wd.findElement(locator).isSelected()) {
+            wd.findElement(locator).click();
+        }
+    }
 }

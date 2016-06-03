@@ -32,30 +32,23 @@ public class ContactHelper extends HelperBase{
     }
 
     public void fillBirthdayData(BirthdayData birthdayData) {
-        if (!wd.findElement(birthdayData.getBday()).isSelected()) {
-            wd.findElement(birthdayData.getBday()).click();
-        }
-        if (!wd.findElement(birthdayData.getBmonth()).isSelected()) {
-            wd.findElement(birthdayData.getBmonth()).click();
-        }
+        selectFromList(birthdayData.getBday());
+        selectFromList(birthdayData.getBmonth());
         type(By.name("byear"), birthdayData.getByear());
     }
 
     public void fillAnniversaryData(AnniversaryData anniversaryData) {
-        if (!wd.findElement(anniversaryData.getAday()).isSelected()) {
-            wd.findElement(anniversaryData.getAday()).click();
-        }
-        if (!wd.findElement(anniversaryData.getAmonth()).isSelected()) {
-            wd.findElement(anniversaryData.getAmonth()).click();
-        }
+        selectFromList(anniversaryData.getAday());
+        selectFromList(anniversaryData.getAmonth());
         type(By.name("ayear"), anniversaryData.getAyear());
 
     }
 
-    public void fillGroupData() {
-        if (!wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[2]")).isSelected()) {
-            click(By.xpath("//div[@id='content']/form/select[5]//option[2]"));
-        }
+    public void fillGroupData(By groupName) {
+        //if (!wd.findElement(groupName).isSelected()) {
+        //    click(groupName);
+        //}
+        selectFromList(groupName);
     }
 
     public void fillHomepageData(String homepage) {
