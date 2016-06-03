@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Address Book" verbose="5" data-provider-thread-count="1">
-    <test name="Groups">
+    <!--<test name="Groups">
         <classes>
             <class name="ru.juliamelf.javaqa.addressbook.tests.GroupCreationTests"/>
             <class name="ru.juliamelf.javaqa.addressbook.tests.GroupModificationTests"/>
             <class name="ru.juliamelf.javaqa.addressbook.tests.GroupDeletionTests"/>
         </classes>
-    </test>
+    </test>-->
     <test name="Contacts">
         <classes>
             <class name="ru.juliamelf.javaqa.addressbook.tests.ContactCreationTests"/>
             <class name="ru.juliamelf.javaqa.addressbook.tests.ContactModificationTests"/>
-
+            <class name="ru.juliamelf.javaqa.addressbook.tests.ContactDeletionTests"/>
         </classes>
     </test>
 </suite>

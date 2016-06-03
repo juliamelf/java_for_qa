@@ -89,6 +89,10 @@ public class ContactHelper extends HelperBase{
     }
 
     public void submitContactModification() {
-        click(By.name("update"));
+        click(By.xpath("//input[@value='Update']"));
+    }
+
+    public void initContactDeletion() {
+        click(By.xpath("//input[@value='Delete']"));
     }
 }
