@@ -31,25 +31,24 @@ public class ContactHelper extends HelperBase{
         type(By.name("address2"), secondAddress);
     }
 
-    public void fillBirthdayData() {
-        if (!wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[20]")).isSelected()) {
-            wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[20]")).click();
+    public void fillBirthdayData(BirthdayData birthdayData) {
+        if (!wd.findElement(birthdayData.getBday()).isSelected()) {
+            wd.findElement(birthdayData.getBday()).click();
         }
-        if (!wd.findElement(By.xpath("//div[@id='content']/form/select[2]//option[2]")).isSelected()) {
-            wd.findElement(By.xpath("//div[@id='content']/form/select[2]//option[2]")).click();
+        if (!wd.findElement(birthdayData.getBmonth()).isSelected()) {
+            wd.findElement(birthdayData.getBmonth()).click();
         }
-        wd.findElement(By.name("byear")).click();
-        wd.findElement(By.name("byear")).clear();
-        wd.findElement(By.name("byear")).sendKeys("1990");
-        if (!wd.findElement(By.xpath("//div[@id='content']/form/select[3]//option[21]")).isSelected()) {
-            wd.findElement(By.xpath("//div[@id='content']/form/select[3]//option[21]")).click();
+        type(By.name("byear"), birthdayData.getByear());
+    }
+
+    public void fillAnniversaryData(AnniversaryData anniversaryData) {
+        if (!wd.findElement(anniversaryData.getAday()).isSelected()) {
+            wd.findElement(anniversaryData.getAday()).click();
         }
-        if (!wd.findElement(By.xpath("//div[@id='content']/form/select[4]//option[2]")).isSelected()) {
-            wd.findElement(By.xpath("//div[@id='content']/form/select[4]//option[2]")).click();
+        if (!wd.findElement(anniversaryData.getAmonth()).isSelected()) {
+            wd.findElement(anniversaryData.getAmonth()).click();
         }
-        wd.findElement(By.name("ayear")).click();
-        wd.findElement(By.name("ayear")).clear();
-        wd.findElement(By.name("ayear")).sendKeys("1990");
+        type(By.name("ayear"), anniversaryData.getAyear());
 
     }
 
@@ -90,5 +89,13 @@ public class ContactHelper extends HelperBase{
         type(By.name("lastname"), userNameData.getLastName());
         type(By.name("nickname"), userNameData.getNickname());
         type(By.name("title"), userNameData.getTitle());
+    }
+
+    public void initContactModification() {
+        click(By.xpath("//a[@href='edit.php?id=2']"));
+    }
+
+    public void submitContactModification() {
+        click(By.name("update"));
     }
 }
