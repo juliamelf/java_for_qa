@@ -1,8 +1,10 @@
 package ru.juliamelf.javaqa.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import ru.juliamelf.javaqa.addressbook.model.*;
 
 /**
@@ -43,11 +45,14 @@ public class ContactHelper extends HelperBase{
 
     }
 
-    public void fillGroupData(By groupName) {
-        //if (!wd.findElement(groupName).isSelected()) {
-        //    click(groupName);
-        //}
-        selectFromList(groupName);
+    public void fillGroupData(By groupName, boolean creation) {
+        if (creation) {
+            selectFromList(groupName);
+        } else {
+            Assert.assertFalse(isElementPresent(groupName));
+        }
+
+        //selectFromList(groupName);
     }
 
     public void fillHomepageData(String homepage) {
@@ -99,4 +104,5 @@ public class ContactHelper extends HelperBase{
     public void selectContact() {
         click(By.xpath("//input[contains(@title, 'Select')]"));
     }
+
 }

@@ -24,6 +24,7 @@ public class ContactModificationTests extends TestBase {
         app.getContactHelper().fillHomepageData("petr.ru");
         app.getContactHelper().fillBirthdayData(new BirthdayData("1995", By.xpath("//select[@name='bday']//option[20]"), By.xpath("//select[@name='bmonth']//option[5]")));
         app.getContactHelper().fillAnniversaryData(new AnniversaryData("2015", By.xpath("//select[@name='aday']//option[20]"), By.xpath("//select[@name='amonth']//option[5]")));
+        app.getContactHelper().fillGroupData(By.xpath("//select[@name='new_group']/option[2]"), false);
         app.getContactHelper().fillSecondAddressData("New Street name, 222");
         app.getContactHelper().fillSecondPhoneData("84957774411");
         app.getContactHelper().fillNotesData("new comments");
