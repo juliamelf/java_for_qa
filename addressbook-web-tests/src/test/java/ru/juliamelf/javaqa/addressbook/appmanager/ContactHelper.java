@@ -1,11 +1,10 @@
 package ru.juliamelf.javaqa.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import ru.juliamelf.javaqa.addressbook.model.*;
+import static ru.juliamelf.javaqa.addressbook.tests.TestBase.app;
 
 /**
  * Created by korotkova on 6/2/2016.
@@ -105,4 +104,26 @@ public class ContactHelper extends HelperBase{
         click(By.xpath("//input[contains(@title, 'Select')]"));
     }
 
+    public void createContact(UserNameData userNameData, PhoneData phoneData, EmailData emailData,
+                              BirthdayData birthdayData, AnniversaryData anniversaryData, ContactData contactData) {
+        app.getNavigationHelper().gotoContactAdd();
+        fillNameData(userNameData);
+        fillCompanyData(contactData.getCompany());
+        fillFirstAddressData(contactData.getFirstAddress());
+        fillFirstPhoneData(phoneData);
+        fillEmailData(emailData);
+        fillHomepageData(contactData.getHomepage());
+        fillBirthdayData(birthdayData);
+        fillAnniversaryData(anniversaryData);
+        fillGroupData(contactData.getGroupName(), true);
+        fillSecondAddressData(contactData.getSecondAddress());
+        fillSecondPhoneData(contactData.getSecondPhone());
+        fillNotesData(contactData.getComments());
+        submitContactAdd();
+        app.getNavigationHelper().gotoHomePage();
+    }
+
+    public boolean isContactExists() {
+        return isElementPresent(By.xpath("//input[contains(@title, 'Select')]"));
+    }
 }

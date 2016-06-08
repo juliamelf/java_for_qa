@@ -2,7 +2,6 @@ package ru.juliamelf.javaqa.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
  * Created by korotkova on 6/2/2016.
