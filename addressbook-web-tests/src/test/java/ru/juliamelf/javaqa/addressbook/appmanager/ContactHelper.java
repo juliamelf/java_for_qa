@@ -2,6 +2,7 @@ package ru.juliamelf.javaqa.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.juliamelf.javaqa.addressbook.model.*;
 import static ru.juliamelf.javaqa.addressbook.tests.TestBase.app;
@@ -19,6 +20,49 @@ public class ContactHelper extends HelperBase{
         click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
+    public void initContactModification() {
+        click(By.xpath("//a[contains(@href, 'edit.php?id')]"));
+    }
+
+    public void submitContactModification() {
+        click(By.xpath("//input[@value='Update']"));
+    }
+
+    public void initContactDeletion() {
+        click(By.xpath("//input[@value='Delete']"));
+        wd.switchTo().alert().accept();
+    }
+
+    public void selectContact() {
+        click(By.xpath("//input[contains(@title, 'Select')]"));
+    }
+
+    public boolean isContactExists() {
+        return isElementPresent(By.xpath("//input[contains(@title, 'Select')]"));
+    }
+
+    public void fillContactForm(ContactData contactData, boolean creation) {
+        type(By.name("firstname"), contactData.getFirstName());
+        type(By.name("middlename"), contactData.getMiddleName());
+        type(By.name("lastname"), contactData.getLastName());
+        type(By.name("company"), contactData.getCompany());
+        type(By.name("address"), contactData.getFirstAddress());
+
+        if (creation) {
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+        } else {
+            Assert.assertFalse(isElementPresent(By.name("new_group")));
+        }
+    }
+
+    public void createContact(ContactData contactData, boolean creation) {
+        app.getNavigationHelper().gotoContactAdd();
+        fillContactForm(contactData, creation);
+        submitContactAdd();
+        app.getNavigationHelper().gotoHomePage();
+    }
+
+    /* OLD METHODS
     public void fillNotesData(String notes) {
         type(By.name("notes"), notes);
     }
@@ -42,16 +86,6 @@ public class ContactHelper extends HelperBase{
         selectFromList(anniversaryData.getAmonth());
         type(By.name("ayear"), anniversaryData.getAyear());
 
-    }
-
-    public void fillGroupData(By groupName, boolean creation) {
-        if (creation) {
-            selectFromList(groupName);
-        } else {
-            Assert.assertFalse(isElementPresent(groupName));
-        }
-
-        //selectFromList(groupName);
     }
 
     public void fillHomepageData(String homepage) {
@@ -87,43 +121,5 @@ public class ContactHelper extends HelperBase{
         type(By.name("title"), userNameData.getTitle());
     }
 
-    public void initContactModification() {
-        click(By.xpath("//a[contains(@href, 'edit.php?id')]"));
-    }
-
-    public void submitContactModification() {
-        click(By.xpath("//input[@value='Update']"));
-    }
-
-    public void initContactDeletion() {
-        click(By.xpath("//input[@value='Delete']"));
-        wd.switchTo().alert().accept();
-    }
-
-    public void selectContact() {
-        click(By.xpath("//input[contains(@title, 'Select')]"));
-    }
-
-    public void createContact(UserNameData userNameData, PhoneData phoneData, EmailData emailData,
-                              BirthdayData birthdayData, AnniversaryData anniversaryData, ContactData contactData) {
-        app.getNavigationHelper().gotoContactAdd();
-        fillNameData(userNameData);
-        fillCompanyData(contactData.getCompany());
-        fillFirstAddressData(contactData.getFirstAddress());
-        fillFirstPhoneData(phoneData);
-        fillEmailData(emailData);
-        fillHomepageData(contactData.getHomepage());
-        fillBirthdayData(birthdayData);
-        fillAnniversaryData(anniversaryData);
-        fillGroupData(contactData.getGroupName(), true);
-        fillSecondAddressData(contactData.getSecondAddress());
-        fillSecondPhoneData(contactData.getSecondPhone());
-        fillNotesData(contactData.getComments());
-        submitContactAdd();
-        app.getNavigationHelper().gotoHomePage();
-    }
-
-    public boolean isContactExists() {
-        return isElementPresent(By.xpath("//input[contains(@title, 'Select')]"));
-    }
+     */
 }

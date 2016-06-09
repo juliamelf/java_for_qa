@@ -26,7 +26,6 @@ public class NavigationHelper extends HelperBase{
         if (isElementPresent(By.id("maintable"))) {
             return;
         }
-
         click(By.linkText("home"));
     }
 
@@ -35,7 +34,6 @@ public class NavigationHelper extends HelperBase{
                 && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")) {
             return;
         }
-
         click(By.linkText("add new"));
     }
 }

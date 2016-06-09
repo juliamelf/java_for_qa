@@ -1,24 +1,40 @@
 package ru.juliamelf.javaqa.addressbook.model;
 
-import org.openqa.selenium.By;
-
 public class ContactData {
+    private final String firstName;
+    private final String middleName;
+    private final String lastName;
     private final String company;
     private final String firstAddress;
-    private final String homepage;
-    private final By groupName;
-    private final String secondAddress;
-    private final String secondPhone;
-    private final String comments;
+    private String group;
 
-    public ContactData(String company, String firstAddress, String homepage, By groupName, String secondAddress, String secondPhone, String comments) {
+    // private final String homepage;
+   // private final String secondAddress;
+   // private final String secondPhone;
+   // private final String comments;
+
+    public ContactData(String firstName, String middleName, String lastName, String company, String firstAddress, String group) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
         this.company = company;
         this.firstAddress = firstAddress;
-        this.homepage = homepage;
-        this.groupName = groupName;
-        this.secondAddress = secondAddress;
-        this.secondPhone = secondPhone;
-        this.comments = comments;
+        //this.homepage = homepage;
+        //this.secondAddress = secondAddress;
+        //this.secondPhone = secondPhone;
+        //this.comments = comments;
+        this.group = group;
+    }
+
+
+    public String getFirstName() { return firstName; }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public String getCompany() {
@@ -29,12 +45,11 @@ public class ContactData {
         return firstAddress;
     }
 
+    public String getGroup() { return group; }
+
+    /*
     public String getHomepage() {
         return homepage;
-    }
-
-    public By getGroupName() {
-        return groupName;
     }
 
     public String getSecondAddress() {
@@ -48,4 +63,6 @@ public class ContactData {
     public String getComments() {
         return comments;
     }
+
+    */
 }

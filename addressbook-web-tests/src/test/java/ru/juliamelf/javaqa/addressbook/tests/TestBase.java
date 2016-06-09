@@ -10,7 +10,7 @@ import ru.juliamelf.javaqa.addressbook.appmanager.ApplicationManager;
  */
 public class TestBase {
 
-    public final static ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
+    public final static ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
 
     @BeforeMethod
     public void setUp() throws Exception {

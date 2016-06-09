@@ -30,21 +30,6 @@ public class HelperBase {
         }
     }
 
-    public boolean isAlertPresent() {
-        try {
-            wd.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
-
-    protected void selectFromList(By locator) {
-        if (!wd.findElement(locator).isSelected()) {
-            wd.findElement(locator).click();
-        }
-    }
-
     protected boolean isElementPresent(By locator) {
         try {
             wd.findElement(locator);
@@ -53,5 +38,14 @@ public class HelperBase {
             return false;
         }
 
+    }
+
+    public boolean isAlertPresent() {
+        try {
+            wd.switchTo().alert();
+            return true;
+        } catch (NoAlertPresentException e) {
+            return false;
+        }
     }
 }
