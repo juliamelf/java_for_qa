@@ -20,8 +20,8 @@ public class ContactHelper extends HelperBase{
         click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
-    public void initContactModification() {
-        click(By.xpath("//a[contains(@href, 'edit.php?id')]"));
+    public void initContactModification(int index) {
+        wd.findElements(By.xpath("//a[contains(@href, 'edit.php?id')]")).get(index).click();
     }
 
     public void submitContactModification() {
@@ -33,8 +33,8 @@ public class ContactHelper extends HelperBase{
         wd.switchTo().alert().accept();
     }
 
-    public void selectContact() {
-        click(By.xpath("//input[contains(@title, 'Select')]"));
+    public void selectContact(int index) {
+        wd.findElements(By.xpath("//input[contains(@title, 'Select')]")).get(index).click();
     }
 
     public boolean isContactExists() {
