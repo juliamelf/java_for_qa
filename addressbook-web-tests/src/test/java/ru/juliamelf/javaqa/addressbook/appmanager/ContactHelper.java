@@ -62,6 +62,10 @@ public class ContactHelper extends HelperBase{
         app.getNavigationHelper().gotoHomePage();
     }
 
+    public int getContactCount() {
+        return wd.findElements(By.xpath("//input[contains(@title, 'Select')]")).size();
+    }
+
     /* OLD METHODS
     public void fillNotesData(String notes) {
         type(By.name("notes"), notes);

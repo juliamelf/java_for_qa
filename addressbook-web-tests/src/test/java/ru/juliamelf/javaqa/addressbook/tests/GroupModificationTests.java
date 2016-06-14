@@ -1,5 +1,6 @@
 package ru.juliamelf.javaqa.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.juliamelf.javaqa.addressbook.model.GroupData;
 
@@ -14,11 +15,14 @@ public class GroupModificationTests extends TestBase{
         if(!app.getGroupHelper().isGroupExists()) {
             app.getGroupHelper().createGroup(new GroupData("test group", null, null));
         }
+        int before = app.getGroupHelper().getGroupCount();
         app.getGroupHelper().selectGroup();
         app.getGroupHelper().initGroupModification();
         app.getGroupHelper().fillGroupForm(new GroupData("new test group", "new test 1", "new test 2"));
         app.getGroupHelper().submitGroupModification();
         app.getGroupHelper().returnToGroupPage();
+        int after = app.getGroupHelper().getGroupCount();
+        Assert.assertEquals(after, before);
 
     }
 
