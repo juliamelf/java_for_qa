@@ -2,9 +2,14 @@ package ru.juliamelf.javaqa.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.juliamelf.javaqa.addressbook.model.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static ru.juliamelf.javaqa.addressbook.tests.TestBase.app;
 
 /**
@@ -64,6 +69,17 @@ public class ContactHelper extends HelperBase{
 
     public int getContactCount() {
         return wd.findElements(By.xpath("//input[contains(@title, 'Select')]")).size();
+    }
+
+    public List<ContactData> getContactList() {
+        List<ContactData> contacts = new ArrayList<ContactData>();
+        List<WebElement> elements = wd.findElements(By.xpath("//tr[@name = 'entry']/td[2]"));
+        for(WebElement element: elements) {
+            String name = element.getText();
+            ContactData contact = new ContactData(null, null, name, null, null, null);
+            contacts.add(contact);
+        }
+        return contacts;
     }
 
     /* OLD METHODS
