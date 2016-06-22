@@ -60,18 +60,31 @@ public class ContactHelper extends HelperBase{
         }
     }
 
-    public void createContact(ContactData contactData, boolean creation) {
-        app.getNavigationHelper().gotoContactAdd();
+    public void create(ContactData contactData, boolean creation) {
+        app.goTo().ContactAdd();
         fillContactForm(contactData, creation);
         submitContactAdd();
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().HomePage();
+    }
+
+    public void modify(ContactData contact, int index) {
+        initContactModification(index);
+        fillContactForm(contact, false);
+        submitContactModification();
+        app.goTo().HomePage();
+    }
+
+    public void delete(int index) {
+        selectContact(index);
+        initContactDeletion();
+        app.goTo().HomePage();
     }
 
     public int getContactCount() {
         return wd.findElements(By.xpath("//input[contains(@title, 'Select')]")).size();
     }
 
-    public List<ContactData> getContactList() {
+    public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for(WebElement element: elements) {

@@ -1,6 +1,7 @@
 package ru.juliamelf.javaqa.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.juliamelf.javaqa.addressbook.model.ContactData;
 
@@ -12,21 +13,24 @@ import java.util.List;
  */
 public class ContactModificationTests extends TestBase {
 
+    @BeforeMethod
+    public void ensurePreconditions() {
+        if(app.contact().list().size() == 0) {
+            app.contact().create(new ContactData("Ivan", "Ivanovich", "Ivanov", "Company", "Arbat, 1", "test group"), true);
+        }
+    }
+
     @Test
     public void testContactModification() {
-        if(!app.getContactHelper().isContactExists()) {
-            app.getContactHelper().createContact(new ContactData("Ivan", "Ivanovich", "Ivanov", "Company", "Arbat, 1", "test group"), true);
-        }
-        List<ContactData> before = app.getContactHelper().getContactList();
-        app.getContactHelper().initContactModification(before.size() - 1);
-        ContactData contact = new ContactData(before.get(before.size() - 1).getId(), "Alex", "Alexandrovich", "Alexandrov", "Alex Company", "Lenina, 1", null);
-        app.getContactHelper().fillContactForm(contact, false);
-        app.getContactHelper().submitContactModification();
-        app.getNavigationHelper().gotoHomePage();
-        List<ContactData> after = app.getContactHelper().getContactList();
+
+        List<ContactData> before = app.contact().list();
+        int index = before.size() - 1;
+        ContactData contact = new ContactData(before.get(index).getId(), "Alex", "Alexandrovich", "Alexandrov", "Alex Company", "Lenina, 1", null);
+        app.contact().modify(contact, index);
+        List<ContactData> after = app.contact().list();
         Assert.assertEquals(after.size(), before.size());
 
-        before.remove(before.size() - 1);
+        before.remove(index);
         before.add(contact);
         Comparator<? super ContactData> ById = ((o1, o2) -> Integer.compare(o1.getId(), o2.getId()));
         before.sort(ById);
@@ -34,4 +38,6 @@ public class ContactModificationTests extends TestBase {
         Assert.assertEquals(before, after);
 
     }
+
+
 }
