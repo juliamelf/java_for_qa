@@ -92,70 +92,10 @@ public class ContactHelper extends HelperBase{
             String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
             String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
             String firstAddress = element.findElement(By.cssSelector("td:nth-child(4)")).getText();
-            ContactData contact = new ContactData(id, firstName, null, lastName, null, firstAddress, null);
+            ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).withFirstAddress(firstAddress);
             contacts.add(contact);
         }
         return contacts;
     }
 
-    /* OLD METHODS
-    public void fillNotesData(String notes) {
-        type(By.name("notes"), notes);
-    }
-
-    public void fillSecondPhoneData(String secondPhone) {
-        type(By.name("phone2"), secondPhone);
-    }
-
-    public void fillSecondAddressData(String secondAddress) {
-        type(By.name("address2"), secondAddress);
-    }
-
-    public void fillBirthdayData(BirthdayData birthdayData) {
-        selectFromList(birthdayData.getBday());
-        selectFromList(birthdayData.getBmonth());
-        type(By.name("byear"), birthdayData.getByear());
-    }
-
-    public void fillAnniversaryData(AnniversaryData anniversaryData) {
-        selectFromList(anniversaryData.getAday());
-        selectFromList(anniversaryData.getAmonth());
-        type(By.name("ayear"), anniversaryData.getAyear());
-
-    }
-
-    public void fillHomepageData(String homepage) {
-        type(By.name("homepage"), homepage);
-    }
-
-    public void fillEmailData(EmailData emailData) {
-        type(By.name("email"), emailData.getFirstEmail());
-        type(By.name("email2"), emailData.getSecondEmail());
-        type(By.name("email3"), emailData.getThirdEmail());
-    }
-
-    public void fillFirstPhoneData(PhoneData firstPhoneData) {
-        type(By.name("home"), firstPhoneData.getHomeNumber());
-        type(By.name("mobile"), firstPhoneData.getMobileNumber());
-        type(By.name("work"), firstPhoneData.getWorkNumber());
-        type(By.name("fax"), firstPhoneData.getFaxNumber());
-    }
-
-    public void fillFirstAddressData(String firstAddress) {
-       type(By.name("address"), firstAddress);
-    }
-
-    public void fillCompanyData(String company) {
-        type(By.name("company"), company);
-    }
-
-    public void fillNameData(UserNameData userNameData) {
-        type(By.name("firstname"), userNameData.getFirstName());
-        type(By.name("middlename"), userNameData.getMiddleName());
-        type(By.name("lastname"), userNameData.getLastName());
-        type(By.name("nickname"), userNameData.getNickname());
-        type(By.name("title"), userNameData.getTitle());
-    }
-
-     */
 }

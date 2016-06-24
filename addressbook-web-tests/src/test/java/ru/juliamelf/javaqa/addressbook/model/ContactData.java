@@ -1,48 +1,23 @@
 package ru.juliamelf.javaqa.addressbook.model;
 
 public class ContactData {
-    private int id;
-    private final String firstName;
-    private final String middleName;
-    private final String lastName;
-    private final String company;
-    private final String firstAddress;
+    private int id = Integer.MAX_VALUE;;
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    private String company;
+    private String firstAddress;
     private String group;
 
-    // private final String homepage;
-   // private final String secondAddress;
-   // private final String secondPhone;
-   // private final String comments;
-
-    public ContactData(int id, String firstName, String middleName, String lastName, String company, String firstAddress, String group) {
-        this.id = id;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.company = company;
-        this.firstAddress = firstAddress;
-        //this.homepage = homepage;
-        //this.secondAddress = secondAddress;
-        //this.secondPhone = secondPhone;
-        //this.comments = comments;
-        this.group = group;
-    }
-
-    public ContactData(String firstName, String middleName, String lastName, String company, String firstAddress, String group) {
-        this.id = Integer.MAX_VALUE;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.company = company;
-        this.firstAddress = firstAddress;
-        this.group = group;
-    }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) { this.id = id; }
+    public ContactData withId(int id) {
+        this.id = id;
+        return this;
+    }
 
     public String getFirstName() { return firstName; }
 
@@ -63,6 +38,36 @@ public class ContactData {
     }
 
     public String getGroup() { return group; }
+
+    public ContactData withFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    public ContactData withMiddleName(String middleName) {
+        this.middleName = middleName;
+        return this;
+    }
+
+    public ContactData withLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    public ContactData withCompany(String company) {
+        this.company = company;
+        return this;
+    }
+
+    public ContactData withFirstAddress(String firstAddress) {
+        this.firstAddress = firstAddress;
+        return this;
+    }
+
+    public ContactData withGroup(String group) {
+        this.group = group;
+        return this;
+    }
 
     @Override
     public String toString() {
@@ -95,22 +100,4 @@ public class ContactData {
         return result;
     }
 
-    /*
-    public String getHomepage() {
-        return homepage;
-    }
-
-    public String getSecondAddress() {
-        return secondAddress;
-    }
-
-    public String getSecondPhone() {
-        return secondPhone;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    */
 }
