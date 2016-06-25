@@ -44,6 +44,10 @@ public class ContactHelper extends HelperBase{
         wd.findElements(By.xpath("//input[contains(@title, 'Select')]")).get(index).click();
     }
 
+    public void selectContactById(int id) {
+        wd.findElement(By.cssSelector("input[id = '"+ id + "']")).click();
+    }
+
     public boolean isContactExists() {
         return isElementPresent(By.xpath("//input[contains(@title, 'Select')]"));
     }
@@ -82,6 +86,12 @@ public class ContactHelper extends HelperBase{
         app.goTo().HomePage();
     }
 
+    public void delete(ContactData contact) {
+        selectContactById(contact.getId());
+        initContactDeletion();
+        app.goTo().HomePage();
+    }
+
     public int getContactCount() {
         return wd.findElements(By.xpath("//input[contains(@title, 'Select')]")).size();
     }
@@ -113,5 +123,6 @@ public class ContactHelper extends HelperBase{
         }
         return contacts;
     }
+
 
 }
