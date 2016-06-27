@@ -28,7 +28,8 @@ public class ContactHelper extends HelperBase{
     }
 
     public void initContactModificationById(int id) {
-        wd.findElements(By.xpath("//a[contains(@href, '"+ id +"')]")).get(1).click();
+       // wd.findElements(By.xpath("//a[contains(@href, '"+ id +"')]")).get(1).click();
+        wd.findElement(By.cssSelector(String.format("a[href=edit.php?id=%s]", id))).click();
     }
 
     public void submitContactModification() {
@@ -106,5 +107,17 @@ public class ContactHelper extends HelperBase{
         return contactCache;
     }
 
+    public ContactData infoFromEditForm(ContactData contact) {
+        initContactModificationById(contact.getId());
+        String firstName = wd.findElement(By.name("firstname")).getAttribute("value");
+        String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
+        String home = wd.findElement(By.name("home")).getAttribute("value");
+        String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+        String work = wd.findElement(By.name("work")).getAttribute("value");
+        app.goTo().HomePage();
+        return new ContactData()
+                .withFirstName(firstName).withLastName(lastName)
+                .withHome(home).withMobile(mobile).withWork(work);
+    }
 
 }

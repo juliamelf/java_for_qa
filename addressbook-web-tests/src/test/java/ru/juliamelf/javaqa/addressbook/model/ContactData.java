@@ -8,7 +8,36 @@ public class ContactData {
     private String company;
     private String firstAddress;
     private String group;
+    private String home;
+    private String mobile;
+    private String work;
 
+    public String getHome() {
+        return home;
+    }
+
+    public ContactData withHome(String home) {
+        this.home = home;
+        return this;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public ContactData withMobile(String mobile) {
+        this.mobile = mobile;
+        return this;
+    }
+
+    public String getWork() {
+        return work;
+    }
+
+    public ContactData withWork(String work) {
+        this.work = work;
+        return this;
+    }
 
     public int getId() {
         return id;
