@@ -17,6 +17,8 @@ import static ru.juliamelf.javaqa.addressbook.tests.TestBase.app;
  */
 public class ContactHelper extends HelperBase{
 
+    private Contacts contactCache = null;
+
     public ContactHelper(WebDriver wd) {
         super(wd);
     }
@@ -68,6 +70,7 @@ public class ContactHelper extends HelperBase{
         app.goTo().ContactAdd();
         fillContactForm(contactData, creation);
         submitContactAdd();
+        contactCache = null;
         app.goTo().HomePage();
     }
 
@@ -75,17 +78,22 @@ public class ContactHelper extends HelperBase{
         initContactModificationById(contact.getId());
         fillContactForm(contact, false);
         submitContactModification();
+        contactCache = null;
         app.goTo().HomePage();
     }
 
     public void delete(ContactData contact) {
         selectContactById(contact.getId());
         initContactDeletion();
+        contactCache = null;
         app.goTo().HomePage();
     }
 
     public Contacts all() {
-        Contacts contacts = new Contacts();
+        if (contactCache != null) {
+            return new Contacts(contactCache);
+        }
+        contactCache = new Contacts();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for(WebElement element: elements) {
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
@@ -93,9 +101,9 @@ public class ContactHelper extends HelperBase{
             String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
             String firstAddress = element.findElement(By.cssSelector("td:nth-child(4)")).getText();
             ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).withFirstAddress(firstAddress);
-            contacts.add(contact);
+            contactCache.add(contact);
         }
-        return contacts;
+        return contactCache;
     }
 
 
