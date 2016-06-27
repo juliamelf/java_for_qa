@@ -31,7 +31,7 @@ public class ContactModificationTests extends TestBase {
         ContactData contact = new ContactData().withId(modifiedGroup.getId())
                 .withFirstName("Alex").withMiddleName("Alexandrovich").withLastName("Alexandrov")
                 .withCompany("Alex Company").withFirstAddress("Lenina, 1");
-        //app.contact().modify(contact);
+        app.contact().modify(contact);
         Set<ContactData> after = app.contact().all();
         Assert.assertEquals(after.size(), before.size());
 
