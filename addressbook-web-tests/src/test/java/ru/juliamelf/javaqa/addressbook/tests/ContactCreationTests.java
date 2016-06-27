@@ -24,4 +24,16 @@ public class ContactCreationTests extends TestBase {
 
     }
 
+    @Test
+    public void testBadContactCreation() {
+        Contacts before = app.contact().all();
+        ContactData contact = new ContactData()
+                .withFirstName("Ivan'").withMiddleName("Ivanovich").withLastName("Ivanov")
+                .withCompany("Company").withFirstAddress("Arbat, 1").withGroup("new test group");
+        app.contact().create(contact, true);
+        assertThat(app.contact().getContactCount(), equalTo(before.size()));
+        Contacts after = app.contact().all();
+        assertThat(after, equalTo(before));
+    }
+
 }
