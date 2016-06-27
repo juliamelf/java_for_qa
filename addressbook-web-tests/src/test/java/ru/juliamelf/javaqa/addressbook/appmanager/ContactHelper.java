@@ -5,12 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import ru.juliamelf.javaqa.addressbook.model.*;
+import ru.juliamelf.javaqa.addressbook.model.ContactData;
+import ru.juliamelf.javaqa.addressbook.model.Contacts;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static ru.juliamelf.javaqa.addressbook.tests.TestBase.app;
 
@@ -27,10 +25,6 @@ public class ContactHelper extends HelperBase{
         click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
-    public void initContactModification(int index) {
-        wd.findElements(By.xpath("//a[contains(@href, 'edit.php?id')]")).get(index).click();
-    }
-
     public void initContactModificationById(int id) {
         wd.findElements(By.xpath("//a[contains(@href, '"+ id +"')]")).get(1).click();
     }
@@ -44,16 +38,16 @@ public class ContactHelper extends HelperBase{
         wd.switchTo().alert().accept();
     }
 
-    public void selectContact(int index) {
-        wd.findElements(By.xpath("//input[contains(@title, 'Select')]")).get(index).click();
-    }
-
     public void selectContactById(int id) {
         wd.findElement(By.cssSelector("input[id = '"+ id +"']")).click();
     }
 
     public boolean isContactExists() {
         return isElementPresent(By.xpath("//input[contains(@title, 'Select')]"));
+    }
+
+    public int getContactCount() {
+        return wd.findElements(By.xpath("//input[contains(@title, 'Select')]")).size();
     }
 
     public void fillContactForm(ContactData contactData, boolean creation) {
@@ -84,38 +78,14 @@ public class ContactHelper extends HelperBase{
         app.goTo().HomePage();
     }
 
-    public void delete(int index) {
-        selectContact(index);
-        initContactDeletion();
-        app.goTo().HomePage();
-    }
-
     public void delete(ContactData contact) {
         selectContactById(contact.getId());
         initContactDeletion();
         app.goTo().HomePage();
     }
 
-    public int getContactCount() {
-        return wd.findElements(By.xpath("//input[contains(@title, 'Select')]")).size();
-    }
-
-    public List<ContactData> list() {
-        List<ContactData> contacts = new ArrayList<ContactData>();
-        List<WebElement> elements = wd.findElements(By.name("entry"));
-        for(WebElement element: elements) {
-            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-            String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
-            String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-            String firstAddress = element.findElement(By.cssSelector("td:nth-child(4)")).getText();
-            ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).withFirstAddress(firstAddress);
-            contacts.add(contact);
-        }
-        return contacts;
-    }
-
-    public Set<ContactData> all() {
-        Set<ContactData> contacts = new HashSet<ContactData>();
+    public Contacts all() {
+        Contacts contacts = new Contacts();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for(WebElement element: elements) {
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
