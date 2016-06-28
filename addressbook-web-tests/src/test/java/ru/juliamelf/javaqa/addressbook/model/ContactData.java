@@ -11,6 +11,57 @@ public class ContactData {
     private String home;
     private String mobile;
     private String work;
+    private String allPhones;
+    private String firstEmail;
+    private String secondEmail;
+    private String thirdEmail;
+
+    public String getAllEmails() {
+        return allEmails;
+    }
+
+    public ContactData withAllEmails(String allEmails) {
+        this.allEmails = allEmails;
+        return this;
+    }
+
+    private String allEmails;
+
+    public String getFirstEmail() {
+        return firstEmail;
+    }
+
+    public ContactData withFirstEmail(String firstEmail) {
+        this.firstEmail = firstEmail;
+        return this;
+    }
+
+    public String getSecondEmail() {
+        return secondEmail;
+    }
+
+    public ContactData withSecondEmail(String secondEmail) {
+        this.secondEmail = secondEmail;
+        return this;
+    }
+
+    public String getThirdEmail() {
+        return thirdEmail;
+    }
+
+    public ContactData withThirdEmail(String thirdEmail) {
+        this.thirdEmail = thirdEmail;
+        return this;
+    }
+
+    public String getAllPhones() {
+        return allPhones;
+    }
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
 
     public String getHomePhone() {
         return home;
