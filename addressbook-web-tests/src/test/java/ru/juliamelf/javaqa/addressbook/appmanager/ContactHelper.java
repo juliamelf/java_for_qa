@@ -3,8 +3,6 @@ package ru.juliamelf.javaqa.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import ru.juliamelf.javaqa.addressbook.model.ContactData;
 import ru.juliamelf.javaqa.addressbook.model.Contacts;
 
@@ -29,7 +27,7 @@ public class ContactHelper extends HelperBase{
 
     public void initContactModificationById(int id) {
         wd.findElements(By.xpath("//a[contains(@href, '"+ id +"')]")).get(1).click();
-       // wd.findElement(By.cssSelector(String.format("a[href=edit.php?id=%s]", id))).click();
+       // wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
     }
 
     public void submitContactModification() {
@@ -66,11 +64,13 @@ public class ContactHelper extends HelperBase{
         type(By.name("email2"), contactData.getSecondEmail());
         type(By.name("email3"), contactData.getThirdEmail());
 
+        /*
         if (creation) {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
+        */
     }
 
     public void create(ContactData contactData, boolean creation) {
@@ -121,6 +121,7 @@ public class ContactHelper extends HelperBase{
     public ContactData infoFromEditForm(ContactData contact) {
         initContactModificationById(contact.getId());
         String firstName = wd.findElement(By.name("firstname")).getAttribute("value");
+        String middleName = wd.findElement(By.name("middlename")).getAttribute("value");
         String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
         String firstAddress = wd.findElement(By.name("address")).getAttribute("value");
         String home = wd.findElement(By.name("home")).getAttribute("value");
@@ -131,9 +132,20 @@ public class ContactHelper extends HelperBase{
         String thirdEmail = wd.findElement(By.name("email3")).getAttribute("value");
         app.goTo().HomePage();
         return new ContactData()
-                .withFirstName(firstName).withLastName(lastName).withFirstAddress(firstAddress)
+                .withFirstName(firstName).withMiddleName(middleName).withLastName(lastName)
+                .withFirstAddress(firstAddress)
                 .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work)
                 .withFirstEmail(firstEmail).withSecondEmail(secondEmail).withThirdEmail(thirdEmail);
     }
 
+    public ContactData infoFromCardForm(ContactData contact) {
+        openContactCardById(contact.getId());
+        String allData = wd.findElement(By.id("content")).getText();
+        app.goTo().HomePage();
+        return new ContactData().withAllData(allData);
+    }
+
+    private void openContactCardById(int id) {
+        wd.findElement(By.cssSelector(String.format("a[href= 'view.php?id=%s']", id))).click();
+    }
 }
