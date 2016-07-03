@@ -38,30 +38,4 @@
     <secondEmail>secondemail2@email.com</secondEmail>
     <thirdEmail>thirdemail2@email.com</thirdEmail>
   </contact>
-  <contact>
-    <firstName>Alex 3</firstName>
-    <middleName>Alexandrovich 3</middleName>
-    <lastName>Alexandrov 3</lastName>
-    <company>Alex Company 3</company>
-    <firstAddress>Arbat 3</firstAddress>
-    <home>1112223</home>
-    <mobile>3334443</mobile>
-    <work>5556663</work>
-    <firstEmail>firstemail3@email.com</firstEmail>
-    <secondEmail>secondemail3@email.com</secondEmail>
-    <thirdEmail>thirdemail3@email.com</thirdEmail>
-  </contact>
-  <contact>
-    <firstName>Alex 4</firstName>
-    <middleName>Alexandrovich 4</middleName>
-    <lastName>Alexandrov 4</lastName>
-    <company>Alex Company 4</company>
-    <firstAddress>Arbat 4</firstAddress>
-    <home>1112224</home>
-    <mobile>3334444</mobile>
-    <work>5556664</work>
-    <firstEmail>firstemail4@email.com</firstEmail>
-    <secondEmail>secondemail4@email.com</secondEmail>
-    <thirdEmail>thirdemail4@email.com</thirdEmail>
-  </contact>
 </list>
