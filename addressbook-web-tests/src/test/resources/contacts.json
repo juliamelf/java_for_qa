@@ -1,0 +1,41 @@
+[
+  {
+    "firstName": "Alex 0",
+    "middleName": "Alexandrovich 0",
+    "lastName": "Alexandrov 0",
+    "company": "Alex Company 0",
+    "firstAddress": "Arbat 0",
+    "home": "1112220",
+    "mobile": "3334440",
+    "work": "5556660",
+    "firstEmail": "firstemail0@email.com",
+    "secondEmail": "secondemail0@email.com",
+    "thirdEmail": "thirdemail0@email.com"
+  },
+  {
+    "firstName": "Alex 1",
+    "middleName": "Alexandrovich 1",
+    "lastName": "Alexandrov 1",
+    "company": "Alex Company 1",
+    "firstAddress": "Arbat 1",
+    "home": "1112221",
+    "mobile": "3334441",
+    "work": "5556661",
+    "firstEmail": "firstemail1@email.com",
+    "secondEmail": "secondemail1@email.com",
+    "thirdEmail": "thirdemail1@email.com"
+  },
+  {
+    "firstName": "Alex 2",
+    "middleName": "Alexandrovich 2",
+    "lastName": "Alexandrov 2",
+    "company": "Alex Company 2",
+    "firstAddress": "Arbat 2",
+    "home": "1112222",
+    "mobile": "3334442",
+    "work": "5556662",
+    "firstEmail": "firstemail2@email.com",
+    "secondEmail": "secondemail2@email.com",
+    "thirdEmail": "thirdemail2@email.com"
+  }
+]

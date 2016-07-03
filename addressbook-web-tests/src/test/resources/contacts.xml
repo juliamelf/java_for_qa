@@ -1,0 +1,67 @@
+<list>
+  <contact>
+    <firstName>Alex 0</firstName>
+    <middleName>Alexandrovich 0</middleName>
+    <lastName>Alexandrov 0</lastName>
+    <company>Alex Company 0</company>
+    <firstAddress>Arbat 0</firstAddress>
+    <home>1112220</home>
+    <mobile>3334440</mobile>
+    <work>5556660</work>
+    <firstEmail>firstemail0@email.com</firstEmail>
+    <secondEmail>secondemail0@email.com</secondEmail>
+    <thirdEmail>thirdemail0@email.com</thirdEmail>
+  </contact>
+  <contact>
+    <firstName>Alex 1</firstName>
+    <middleName>Alexandrovich 1</middleName>
+    <lastName>Alexandrov 1</lastName>
+    <company>Alex Company 1</company>
+    <firstAddress>Arbat 1</firstAddress>
+    <home>1112221</home>
+    <mobile>3334441</mobile>
+    <work>5556661</work>
+    <firstEmail>firstemail1@email.com</firstEmail>
+    <secondEmail>secondemail1@email.com</secondEmail>
+    <thirdEmail>thirdemail1@email.com</thirdEmail>
+  </contact>
+  <contact>
+    <firstName>Alex 2</firstName>
+    <middleName>Alexandrovich 2</middleName>
+    <lastName>Alexandrov 2</lastName>
+    <company>Alex Company 2</company>
+    <firstAddress>Arbat 2</firstAddress>
+    <home>1112222</home>
+    <mobile>3334442</mobile>
+    <work>5556662</work>
+    <firstEmail>firstemail2@email.com</firstEmail>
+    <secondEmail>secondemail2@email.com</secondEmail>
+    <thirdEmail>thirdemail2@email.com</thirdEmail>
+  </contact>
+  <contact>
+    <firstName>Alex 3</firstName>
+    <middleName>Alexandrovich 3</middleName>
+    <lastName>Alexandrov 3</lastName>
+    <company>Alex Company 3</company>
+    <firstAddress>Arbat 3</firstAddress>
+    <home>1112223</home>
+    <mobile>3334443</mobile>
+    <work>5556663</work>
+    <firstEmail>firstemail3@email.com</firstEmail>
+    <secondEmail>secondemail3@email.com</secondEmail>
+    <thirdEmail>thirdemail3@email.com</thirdEmail>
+  </contact>
+  <contact>
+    <firstName>Alex 4</firstName>
+    <middleName>Alexandrovich 4</middleName>
+    <lastName>Alexandrov 4</lastName>
+    <company>Alex Company 4</company>
+    <firstAddress>Arbat 4</firstAddress>
+    <home>1112224</home>
+    <mobile>3334444</mobile>
+    <work>5556664</work>
+    <firstEmail>firstemail4@email.com</firstEmail>
+    <secondEmail>secondemail4@email.com</secondEmail>
+    <thirdEmail>thirdemail4@email.com</thirdEmail>
+  </contact>
+</list>
