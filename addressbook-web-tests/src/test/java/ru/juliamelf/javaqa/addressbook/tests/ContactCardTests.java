@@ -17,7 +17,7 @@ public class ContactCardTests extends  TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-        if(app.contact().all().size() == 0) {
+        if(app.db().contacts().size() == 0) {
             app.contact().create(new ContactData()
                     .withFirstName("Ivan").withMiddleName("Ivanovich").withLastName("Ivanov")
                     .withCompany("Company").withFirstAddress("Arbat, 1").withGroup("test group"), true);
@@ -36,7 +36,7 @@ public class ContactCardTests extends  TestBase {
     public String merged (ContactData contact) {
         return Arrays.asList(
                 contact.getFirstName(), contact.getMiddleName(), contact.getLastName(),
-                contact.getFirstAddress(),
+                contact.getCompany(), contact.getFirstAddress(),
                 contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone(),
                 contact.getFirstEmail(), contact.getSecondEmail(), contact.getThirdEmail())
                 .stream()

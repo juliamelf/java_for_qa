@@ -255,7 +255,9 @@ public class ContactData {
 
         if (id != that.id) return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+        if (middleName != null ? !middleName.equals(that.middleName) : that.middleName != null) return false;
         if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
+        if (company != null ? !company.equals(that.company) : that.company != null) return false;
         return firstAddress != null ? firstAddress.equals(that.firstAddress) : that.firstAddress == null;
 
     }
@@ -264,7 +266,9 @@ public class ContactData {
     public int hashCode() {
         int result = id;
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (middleName != null ? middleName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (company != null ? company.hashCode() : 0);
         result = 31 * result + (firstAddress != null ? firstAddress.hashCode() : 0);
         return result;
     }

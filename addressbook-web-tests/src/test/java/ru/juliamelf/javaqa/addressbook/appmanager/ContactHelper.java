@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import ru.juliamelf.javaqa.addressbook.model.ContactData;
 import ru.juliamelf.javaqa.addressbook.model.Contacts;
 
+import java.io.File;
 import java.util.List;
 
 import static ru.juliamelf.javaqa.addressbook.tests.TestBase.app;
@@ -63,7 +64,7 @@ public class ContactHelper extends HelperBase{
         type(By.name("email"), contactData.getFirstEmail());
         type(By.name("email2"), contactData.getSecondEmail());
         type(By.name("email3"), contactData.getThirdEmail());
-        attach(By.name("photo"), contactData.getPhoto());
+        //attach(By.name("photo"), contactData.getPhoto());
 
         /*
         if (creation) {
@@ -124,6 +125,7 @@ public class ContactHelper extends HelperBase{
         String firstName = wd.findElement(By.name("firstname")).getAttribute("value");
         String middleName = wd.findElement(By.name("middlename")).getAttribute("value");
         String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
+        String company = wd.findElement(By.name("company")).getAttribute("value");
         String firstAddress = wd.findElement(By.name("address")).getAttribute("value");
         String home = wd.findElement(By.name("home")).getAttribute("value");
         String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
@@ -134,7 +136,7 @@ public class ContactHelper extends HelperBase{
         app.goTo().HomePage();
         return new ContactData()
                 .withFirstName(firstName).withMiddleName(middleName).withLastName(lastName)
-                .withFirstAddress(firstAddress)
+                .withCompany(company).withFirstAddress(firstAddress)
                 .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work)
                 .withFirstEmail(firstEmail).withSecondEmail(secondEmail).withThirdEmail(thirdEmail);
     }

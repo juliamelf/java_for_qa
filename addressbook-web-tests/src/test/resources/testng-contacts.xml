@@ -7,6 +7,8 @@
             <class name="ru.juliamelf.javaqa.addressbook.tests.ContactCreationTests"/>
             <class name="ru.juliamelf.javaqa.addressbook.tests.ContactModificationTests"/>
             <class name="ru.juliamelf.javaqa.addressbook.tests.ContactDeletionTests"/>
+            <class name="ru.juliamelf.javaqa.addressbook.tests.ContactCardTests"/>
+            <class name="ru.juliamelf.javaqa.addressbook.tests.ContactDataTests"/>
         </classes>
     </test>
 
