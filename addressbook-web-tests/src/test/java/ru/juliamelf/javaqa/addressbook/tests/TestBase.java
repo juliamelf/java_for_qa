@@ -10,7 +10,8 @@ import ru.juliamelf.javaqa.addressbook.appmanager.ApplicationManager;
  */
 public class TestBase {
 
-    public final static ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
+    public final static ApplicationManager app
+            = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
 
     @BeforeSuite
     public void setUp() throws Exception {
